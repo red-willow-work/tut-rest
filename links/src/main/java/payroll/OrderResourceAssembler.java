@@ -1,20 +1,20 @@
 package payroll;
 
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
-import org.springframework.hateoas.Resource;
-import org.springframework.hateoas.ResourceAssembler;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
 
 @Component
-class OrderResourceAssembler implements ResourceAssembler<Order, Resource<Order>> {
+class OrderResourceAssembler implements RepresentationModelAssembler<Order, EntityModel<Order>> {
 
 	@Override
-	public Resource<Order> toResource(Order order) {
+	public EntityModel<Order> toModel(Order order) {
 
 		// Unconditional links to single-item resource and aggregate root
 
-		Resource<Order> orderResource = new Resource<>(order,
+		EntityModel<Order> orderResource = new EntityModel<>(order,
 			linkTo(methodOn(OrderController.class).one(order.getId())).withSelfRel(),
 			linkTo(methodOn(OrderController.class).all()).withRel("orders")
 		);

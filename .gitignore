@@ -6,6 +6,7 @@
 .classpath
 .project
 .settings/
+migrate-to-1.0.sh
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
